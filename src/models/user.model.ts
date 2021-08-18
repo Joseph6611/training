@@ -93,7 +93,10 @@ export class User extends Entity {
 
   @hasOne(()=> Profil, {keyTo: 'userId'})
   profil?: Profil;
-  //@hasMany(()=> Transaction)
+
+  @hasMany(()=> Transaction,{keyTo: 'userId'})
+  transactions?: Transaction[];
+
   constructor(data?: Partial<User>) {
     super(data);
   }
