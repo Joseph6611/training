@@ -59,7 +59,7 @@ export class Transaction extends Entity {
   })
   numero: string;
 
-  @belongsTo(()=> User,{name: 'user'})
+  @belongsTo(() => User)
   userId: number;
 
   constructor(data?: Partial<Transaction>) {
@@ -68,7 +68,6 @@ export class Transaction extends Entity {
 }
 
 export interface TransactionRelations {
-  user?: UserWithRelations;
   // describe navigational properties here
 }
 

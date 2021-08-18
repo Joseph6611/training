@@ -1,6 +1,5 @@
-import {belongsTo, Entity, hasOne, model, property} from '@loopback/repository';
-import {User} from '.';
-import {UserWithRelations} from './user.model';
+import {belongsTo, Entity, model, property} from '@loopback/repository';
+import {UserWithRelations, User} from './user.model';
 
 @model()
 export class Profil extends Entity {
@@ -27,8 +26,8 @@ export class Profil extends Entity {
   })
   updated_at?: string;
 
-  @belongsTo(()=> User)
-  userId?: number;
+  @belongsTo(() => User)
+  userId: number;
 
   constructor(data?: Partial<Profil>) {
     super(data);
