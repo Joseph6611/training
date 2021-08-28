@@ -25,7 +25,6 @@ export class Vente extends Entity {
   })
   updated_at?: string;
 
-
   constructor(data?: Partial<Vente>) {
     super(data);
   }

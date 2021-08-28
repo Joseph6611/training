@@ -1,22 +1,16 @@
-import {inject, Getter} from '@loopback/core';
-import {DefaultCrudRepository, repository, BelongsToAccessor} from '@loopback/repository';
+import {inject} from '@loopback/core';
+import {DefaultCrudRepository} from '@loopback/repository';
 import {MysqlDataSource} from '../datasources';
-import {Wallet, WalletRelations, User} from '../models';
-import {UserRepository} from './user.repository';
+import {Wallet, WalletRelations} from '../models';
 
 export class WalletRepository extends DefaultCrudRepository<
   Wallet,
   typeof Wallet.prototype.id,
   WalletRelations
 > {
-
-  public readonly user: BelongsToAccessor<User, typeof Wallet.prototype.id>;
-
   constructor(
-    @inject('datasources.mysql') dataSource: MysqlDataSource, @repository.getter('UserRepository') protected userRepositoryGetter: Getter<UserRepository>,
+    @inject('datasources.mysql') dataSource: MysqlDataSource,
   ) {
     super(Wallet, dataSource);
-    this.user = this.createBelongsToAccessorFor('user', userRepositoryGetter,);
-    this.registerInclusionResolver('user', this.user.inclusionResolver);
   }
 }

@@ -1,8 +1,4 @@
-import {belongsTo, Entity, hasMany, hasOne, model, property} from '@loopback/repository';
-import {Profil, ProfilWithRelations} from './profil.model';
-import {Transaction} from './transaction.model';
-import {Wallet} from './wallet.model';
-import {Documentation} from './documentation.model';
+import {Entity, model, property} from '@loopback/repository';
 
 @model()
 export class User extends Entity {
@@ -92,18 +88,6 @@ export class User extends Entity {
     required: true,
   })
   firstconnect: boolean;
-
-  @hasMany(() => Transaction)
-  transactions: Transaction[];
-
-  @hasOne(() => Profil)
-  profil: Profil;
-
-  @hasOne(() => Wallet)
-  wallet: Wallet;
-
-  @hasMany(() => Documentation)
-  documentations: Documentation[];
 
   constructor(data?: Partial<User>) {
     super(data);

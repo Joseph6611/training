@@ -1,5 +1,4 @@
-import {belongsTo, Entity, model, property} from '@loopback/repository';
-import {UserWithRelations, User} from './user.model';
+import {Entity, model, property} from '@loopback/repository';
 
 @model()
 export class Profil extends Entity {
@@ -25,9 +24,7 @@ export class Profil extends Entity {
     type: 'date',
   })
   updated_at?: string;
-
-  @belongsTo(() => User)
-  userId: number;
+  
 
   constructor(data?: Partial<Profil>) {
     super(data);
@@ -35,7 +32,6 @@ export class Profil extends Entity {
 }
 
 export interface ProfilRelations {
-  user?: UserWithRelations;
   // describe navigational properties here
 }
 

@@ -56,7 +56,6 @@ export class Charge extends Entity {
   })
   shared: boolean;
 
-
   constructor(data?: Partial<Charge>) {
     super(data);
   }
